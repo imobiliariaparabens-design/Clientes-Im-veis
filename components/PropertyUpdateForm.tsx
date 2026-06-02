@@ -119,9 +119,9 @@ export function PropertyUpdateForm({ initialCode, initialOrigin }: PropertyUpdat
 
   if (status === "success") {
     return (
-      <section className="rounded-lg border border-emerald-200 bg-white px-5 py-10 text-center shadow-sm sm:px-8">
-        <h2 className="text-2xl font-bold text-stone-950">Cadastro atualizado com sucesso.</h2>
-        <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-stone-700">
+      <section className="rounded-lg border border-emerald-200 bg-white px-4 py-8 text-center shadow-sm sm:px-8 sm:py-10">
+        <h2 className="text-xl font-bold leading-tight text-stone-950 sm:text-2xl">Cadastro atualizado com sucesso.</h2>
+        <p className="mx-auto mt-3 max-w-xl text-[15px] leading-6 text-stone-700 sm:mt-4 sm:text-base sm:leading-7">
           Obrigado! Em breve nossa equipe poderá entrar em contato para confirmar as informações.
         </p>
       </section>
@@ -129,7 +129,7 @@ export function PropertyUpdateForm({ initialCode, initialOrigin }: PropertyUpdat
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5 rounded-lg border border-stone-200 bg-white px-5 py-6 shadow-sm sm:px-8 sm:py-8">
+    <form onSubmit={handleSubmit} className="w-full space-y-4 rounded-lg border border-stone-200 bg-white px-4 py-5 shadow-sm sm:space-y-5 sm:px-8 sm:py-8">
       {status === "error" ? (
         <div className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm leading-6 text-red-800" role="alert">
           Não foi possível enviar agora. Por favor, tente novamente ou entre em contato pelo WhatsApp da imobiliária.
@@ -215,7 +215,7 @@ export function PropertyUpdateForm({ initialCode, initialOrigin }: PropertyUpdat
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="w-full rounded-md bg-emerald-800 px-5 py-4 text-base font-bold text-white shadow-sm transition hover:bg-emerald-900 focus:outline-none focus:ring-4 focus:ring-emerald-200 disabled:cursor-not-allowed disabled:bg-stone-400"
+        className="sticky bottom-3 z-10 w-full rounded-md bg-emerald-800 px-5 py-4 text-base font-bold text-white shadow-lg transition hover:bg-emerald-900 focus:outline-none focus:ring-4 focus:ring-emerald-200 disabled:cursor-not-allowed disabled:bg-stone-400 sm:static sm:shadow-sm"
       >
         {status === "submitting" ? "Enviando..." : "Enviar atualização"}
       </button>
@@ -225,9 +225,9 @@ export function PropertyUpdateForm({ initialCode, initialOrigin }: PropertyUpdat
 
 function FormSection({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <section className="space-y-4 border-t border-stone-200 pt-5 first:border-t-0 first:pt-0">
-      <h2 className="text-lg font-bold text-stone-950">{title}</h2>
-      <div className="grid gap-4 sm:grid-cols-2">{children}</div>
+    <section className="min-w-0 space-y-3 border-t border-stone-200 pt-4 first:border-t-0 first:pt-0 sm:space-y-4 sm:pt-5">
+      <h2 className="text-base font-bold leading-tight text-stone-950 sm:text-lg">{title}</h2>
+      <div className="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">{children}</div>
     </section>
   );
 }
