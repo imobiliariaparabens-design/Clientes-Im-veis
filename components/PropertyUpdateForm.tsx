@@ -28,6 +28,8 @@ const initialForm: PropertyUpdatePayload = {
   documentationOk: "",
   hasDeedRegistration: "",
   occupancy: "",
+  keyLocation: "",
+  keyHolderDetails: "",
   authorizesAdvertising: "",
   authorizesSign: "",
   authorizesPhotosVideos: "",
@@ -77,6 +79,7 @@ export function PropertyUpdateForm({ initialCode, initialOrigin }: PropertyUpdat
     docs: {
       documentation: ["Sim", "Não", "Não sei / precisa verificar"],
       occupancy: ["Sim, pelo proprietário", "Sim, por inquilino", "Não, está vazio"],
+      keyLocation: ["Com proprietário", "Com terceiros", "Não se aplica / imóvel ocupado"],
     },
     advertising: ["Sim", "Não", "Quero conversar antes"],
     contact: ["Manhã", "Tarde", "Noite", "Qualquer horário"],
@@ -187,6 +190,26 @@ export function PropertyUpdateForm({ initialCode, initialOrigin }: PropertyUpdat
         <SelectField id="documentationOk" label="A documentação está em dia?" options={fieldGroups.docs.documentation} value={form.documentationOk} onChange={(event) => updateField("documentationOk", event.target.value)} />
         <SelectField id="hasDeedRegistration" label="Possui escritura/registro?" options={fieldGroups.sale.yesNoUnknown} value={form.hasDeedRegistration} onChange={(event) => updateField("hasDeedRegistration", event.target.value)} />
         <SelectField id="occupancy" label="O imóvel está ocupado?" options={fieldGroups.docs.occupancy} value={form.occupancy} onChange={(event) => updateField("occupancy", event.target.value)} />
+        <SelectField
+          id="keyLocation"
+          label="Onde estão as chaves do imóvel?"
+          required={form.occupancy === "Não, está vazio"}
+          options={fieldGroups.docs.keyLocation}
+          value={form.keyLocation}
+          error={errors.keyLocation}
+          onChange={(event) => updateField("keyLocation", event.target.value)}
+        />
+        {form.keyLocation === "Com terceiros" ? (
+          <InputField
+            id="keyHolderDetails"
+            label="Quem está com as chaves?"
+            required
+            placeholder="Nome e telefone, se souber"
+            value={form.keyHolderDetails}
+            error={errors.keyHolderDetails}
+            onChange={(event) => updateField("keyHolderDetails", event.target.value)}
+          />
+        ) : null}
       </FormSection>
 
       <FormSection title="4. Divulgação">

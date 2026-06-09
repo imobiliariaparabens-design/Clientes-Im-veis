@@ -1,14 +1,13 @@
-import { PropertyUpdateForm } from "@/components/PropertyUpdateForm";
 import Link from "next/link";
+import { BuyerLeadForm } from "@/components/BuyerLeadForm";
 
-type HomeProps = {
+type BuyersPageProps = {
   searchParams: Promise<{
-    codigo?: string;
     origem?: string;
   }>;
 };
 
-export default async function Home({ searchParams }: HomeProps) {
+export default async function BuyersPage({ searchParams }: BuyersPageProps) {
   const params = await searchParams;
 
   return (
@@ -19,25 +18,22 @@ export default async function Home({ searchParams }: HomeProps) {
             <p className="text-xs font-semibold uppercase tracking-[0.08em] text-emerald-800 sm:text-sm">
               Imobiliária Para-Bens
             </p>
-            <Link href="/compradores" className="text-sm font-semibold text-emerald-800 underline-offset-4 hover:underline">
-              Compradores
+            <Link href="/" className="text-sm font-semibold text-emerald-800 underline-offset-4 hover:underline">
+              Proprietários
             </Link>
           </div>
           <h1 className="text-2xl font-bold leading-tight text-stone-950 sm:text-4xl">
-            Atualização de Cadastro de Imóvel
+            Cadastro de Interesse em Imóvel
           </h1>
           <p className="mt-3 text-[15px] leading-6 text-stone-700 sm:mt-4 sm:text-lg sm:leading-7">
-            Para mantermos as informações corretas e melhorar a divulgação do seu imóvel, confirme ou atualize os dados abaixo.
+            Informe o tipo de imóvel que você procura para que nossa equipe possa entrar em contato com opções compatíveis.
           </p>
           <p className="mt-3 rounded-md border border-emerald-100 bg-emerald-50 px-3 py-3 text-sm leading-6 text-emerald-950 sm:mt-4 sm:px-4">
-            As informações serão usadas apenas para atualização interna da imobiliária e divulgação autorizada do imóvel.
+            Seus dados serão usados apenas para atendimento comercial da imobiliária e indicação de imóveis conforme seu perfil.
           </p>
         </header>
 
-        <PropertyUpdateForm
-          initialCode={params.codigo ?? ""}
-          initialOrigin={params.origem ?? ""}
-        />
+        <BuyerLeadForm initialOrigin={params.origem ?? ""} />
       </div>
     </main>
   );
