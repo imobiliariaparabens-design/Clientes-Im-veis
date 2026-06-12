@@ -36,6 +36,7 @@ export const REQUIRED_FIELDS: Array<keyof PropertyUpdatePayload> = [
 
 const optionalStringFields = [
   "email",
+  "keyLocation",
   "keyHolderDetails",
   "propertyChanges",
   "notes",
@@ -44,6 +45,7 @@ const optionalStringFields = [
 
 const optionalAirtableFieldNames: Record<(typeof optionalStringFields)[number], string> = {
   email: "E-mail",
+  keyLocation: "Localização das chaves",
   keyHolderDetails: "Quem está com as chaves?",
   propertyChanges: "Alterações no imóvel",
   notes: "Observações",
@@ -134,7 +136,6 @@ export function toAirtableFields(payload: PropertyUpdatePayload) {
     "Documentação em dia?": payload.documentationOk,
     "Escritura/registro?": payload.hasDeedRegistration,
     "Imóvel ocupado?": payload.occupancy,
-    "Localização das chaves": payload.keyLocation,
     "Autoriza divulgação?": payload.authorizesAdvertising,
     "Autoriza placa?": payload.authorizesSign,
     "Autoriza fotos/vídeos?": payload.authorizesPhotosVideos,

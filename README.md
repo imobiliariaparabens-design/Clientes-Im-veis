@@ -140,4 +140,3 @@ A Vercel detecta o Next.js automaticamente. Após o deploy, teste o formulário 
 - O front-end chama apenas `/api/submit-property`.
 - A API valida campos obrigatórios novamente antes de enviar ao Airtable.
 - Erros retornam mensagens simples, sem expor token ou dados sensíveis.
-- Atualização para novo deploy.

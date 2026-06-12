@@ -41,6 +41,12 @@ export async function POST(request: Request) {
     });
 
     if (!response.ok) {
+      const airtableError = await response.text();
+      console.error("Airtable buyer submission failed", {
+        status: response.status,
+        message: airtableError,
+      });
+
       return NextResponse.json({ error: "Erro ao enviar para o Airtable." }, { status: 500 });
     }
 

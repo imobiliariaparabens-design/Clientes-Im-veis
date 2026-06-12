@@ -1,6 +1,8 @@
 import { PropertyUpdateForm } from "@/components/PropertyUpdateForm";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 type HomeProps = {
   searchParams: Promise<{
     codigo?: string;

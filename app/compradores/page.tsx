@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { BuyerLeadForm } from "@/components/BuyerLeadForm";
 
+export const dynamic = "force-dynamic";
+
 type BuyersPageProps = {
   searchParams: Promise<{
     origem?: string;
